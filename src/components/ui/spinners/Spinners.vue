@@ -5,32 +5,42 @@
         <div class="row">
           <vuestic-slider
             :options="config.slider"
-            v-model="selectedSize">
+            v-model="selectedSize"
+          >
           </vuestic-slider>
           <vuestic-slider
             :options="config.slider"
-            v-model="selectedSize">
+            v-model="selectedSize"
+          >
           </vuestic-slider>
-          <div class="col-md-4">
-          </div>
+          <div class="col-md-4"></div>
         </div>
-        <div v-for="(group, i) in groups" :key="i" class="row">
-          <div v-for="item in group" :key="item" class="col-sm-12 col-md-3">
+        <div
+          v-for="(group, id) in groups"
+          :key="id"
+          class="row"
+        >
+          <div
+            v-for="(item, id) in group"
+            :key="id"
+            class="col-sm-12 col-md-3"
+          >
             <div class="spinner-box-container">
               <div class="spinner-box">
                 <component
                   :is="item"
                   :color="palette.primary"
-                  :size="config.size">
+                  :size="config.size"
+                >
                 </component>
               </div>
-              <span>{{item | displayName}}</span>
+              <span>{{ item | displayName }}</span>
             </div>
           </div>
         </div>
         <div class="row align-center">
           <div class="col text-center">
-            {{'spinners.poweredBy' | translate}}
+            {{ 'spinners.poweredBy' | translate }}
             <a :href="'http://epic-spinners.epicmax.co/'" target="_blank">Epic Spinners</a>
           </div>
         </div>
@@ -61,7 +71,8 @@
           group: 4,
           slider: {
             min: 40,
-            max: 80
+            max: 80,
+            tooltip: false
           }
         },
         selectedSize: 60
