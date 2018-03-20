@@ -1,6 +1,9 @@
 <template>
-  <div class="widget" :class="{'no-header': !headerText}">
-    <div class="widget-header" v-if="headerText">{{headerText}}</div>
+  <div class="widget" :class="{ 'no-header': !headerText }">
+    <div class="widget-header" v-if="headerText">{{ headerText }}</div>
+    <div class="widget-settings" v-if="seen">
+      <slot name="settings"></slot>
+    </div>
     <div class="widget-body">
       <slot></slot>
     </div>
@@ -11,7 +14,14 @@
   export default {
     name: 'vuestic-widget',
 
-    props: ['headerText']
+    props: {
+      headerText: {
+        type: String
+      },
+      seen: {
+        type: Boolean
+      }
+    }
   }
 </script>
 
@@ -74,11 +84,6 @@
       }
     }
 
-    .widget-body {
-      height: $widget-body-with-header-height;
-      padding: $widget-padding;
-    }
-
     .widget-header {
       height: $widget-header-height;
       padding: 0 $widget-padding;
@@ -87,6 +92,18 @@
       font-weight: 600;
       display: flex;
       align-items: center;
+    }
+
+    .widget-settings {
+      height: $widget-settings-height;
+      padding: 0 $widget-padding;
+      border-bottom: $widget-header-border;
+      display: flex;
+    }
+
+    .widget-body {
+      height: $widget-body-with-header-height;
+      padding: $widget-padding;
     }
   }
 </style>

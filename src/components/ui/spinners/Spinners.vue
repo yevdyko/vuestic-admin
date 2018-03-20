@@ -1,16 +1,16 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <vuestic-widget :headerText="$t('spinners.title')">
-        <div class="row">
+      <vuestic-widget :headerText="$t('spinners.title')" :seen="seen">
+        <div slot="settings" class="spinners-settings row">
           <vuestic-slider
-            :options="config.slider"
+            :options="config.slider.size"
             v-model="selectedSize"
           >
           </vuestic-slider>
           <vuestic-slider
-            :options="config.slider"
-            v-model="selectedSize"
+            :options="config.slider.speed"
+            v-model="selectedSpeed"
           >
           </vuestic-slider>
           <div class="col-md-4"></div>
@@ -29,8 +29,9 @@
               <div class="spinner-box">
                 <component
                   :is="item"
+                  :animationDuration="selectedSpeed"
                   :color="palette.primary"
-                  :size="config.size"
+                  :size="selectedSize"
                 >
                 </component>
               </div>
@@ -67,15 +68,23 @@
     data: function () {
       return {
         config: {
-          size: 80,
           group: 4,
           slider: {
-            min: 40,
-            max: 80,
-            tooltip: false
+            size: {
+              min: 40,
+              max: 80,
+              tooltip: false
+            },
+            speed: {
+              min: 500,
+              max: 1500,
+              tooltip: false
+            }
           }
         },
-        selectedSize: 60
+        selectedSize: 60,
+        selectedSpeed: 1000,
+        seen: true
       }
     },
 
@@ -102,13 +111,20 @@
 </script>
 
 <style lang="scss">
-  .range {
-    .vue-slider-wrap {
-      width: 9.3rem !important;
-    }
+  @import "../../../sass/variables";
 
-    h2, h4 {
-      margin: .5rem;
+  .spinners-settings {
+    align-items: center;
+    width: 100%;
+
+    .range {
+      .vue-slider-wrap {
+        width: 9.3rem !important;
+      }
+
+      h2, h4 {
+        margin: .5rem;
+      }
     }
   }
 
