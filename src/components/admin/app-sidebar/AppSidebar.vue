@@ -139,6 +139,12 @@
             <span>{{ $t('menu.cards') }}</span>
           </span>
         </sidebar-link>
+        <sidebar-link
+          :to="{ name: 'filters' }">
+          <span slot="title">
+            <span>{{ $t('menu.filters') }}</span>
+          </span>
+        </sidebar-link>
       </sidebar-link-group>
       <sidebar-link
         :to="{ name: 'extra' }">

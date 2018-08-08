@@ -210,6 +210,11 @@ export default new Router({
               component: lazyLoading('ui/tree-view/TreeView'),
             },
             {
+              name: 'filters',
+              path: 'filters',
+              component: lazyLoading('ui/filters/Filters'),
+            },
+            {
               path: '',
               redirect: { name: 'typography' },
             },

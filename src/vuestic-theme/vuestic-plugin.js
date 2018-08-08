@@ -7,6 +7,7 @@ import Checkbox from './vuestic-components/vuestic-checkbox/VuesticCheckbox.vue'
 import DataTable
   from './vuestic-components/vuestic-datatable/VuesticDataTable.vue'
 import Feed from './vuestic-components/vuestic-feed/VuesticFeed.vue'
+import Filter from './vuestic-components/vuestic-filter/VuesticFilter.vue'
 import MediumEditor
   from './vuestic-components/vuestic-medium-editor/VuesticMediumEditor.vue'
 import Modal from './vuestic-components/vuestic-modal/VuesticModal.vue'
@@ -60,6 +61,7 @@ const VuesticPlugin = {
       Checkbox,
       DataTable,
       Feed,
+      Filter,
       Modal,
       MultiSelect,
       PreLoader,

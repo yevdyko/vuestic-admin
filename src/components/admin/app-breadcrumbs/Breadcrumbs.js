@@ -98,7 +98,11 @@ export default {
         {
           path: 'tree-view',
           displayName: 'menu.treeView'
-        }
+        },
+        {
+          path: 'filters',
+          displayName: 'menu.filters'
+        },
       ]
     },
     {
